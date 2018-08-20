@@ -1,0 +1,22 @@
+NB. bio/pedigree manifest
+
+CAPTION=: 'Pedigree'
+
+DESCRIPTION=: 0 : 0
+Animal pedigrees/family trees.
+This addon contains basic functionality for working with pedigrees.
+)
+
+VERSION=: '0.1.0'
+
+RELEASE=: 'j806 j807'
+
+FOLDER=: 'bio/pedigree'
+
+PLATFORMS=: ''
+
+FILES=: 0 : 0
+pedigree.ijs
+test/test.ijs
+test/test_pedigrees.ijs
+)
