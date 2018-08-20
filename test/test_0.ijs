@@ -1,8 +1,12 @@
+NB.*getDir v Given path
+getDir=: '/' joinstring (_1 * 0 >. ])@[ }. '/' cut fpath_j_@jpath@]
+loc_z_=: 3 : 'jpath > (4!:4 <''y'') { 4!:3 $0'  NB. pathname of script calling it
+AddonPath=: 1 getDir loc ''
 
 before_each=: 3 : 0
-  load 'bio/pedigree'
+  load AddonPath,'/pedigree.ijs'
   coinsert 'pedigree'
-  load 'bio/pedigree/test/test_pedigrees'
+  load AddonPath,'/test/test_pedigrees.ijs'
 )
 
 test_ped1=: 3 : 0
