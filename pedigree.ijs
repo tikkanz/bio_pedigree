@@ -99,13 +99,6 @@ NB. eg: jvped  2 getAncestors 8
 NB. eg: (readStructPed 'gsped.bin') 2 getAncestors 20966331
 getAncestors=: 1 :'getParents^:m'
 getAncestors=: getParents^:
-getAncestors=: adverb define
-  'Number of generations specified is invalid' assert (isinteger *. isscalar) m
-  (readStructPed DEFAULT_TDM_PEDIGREEFILE) m getAncestors y
-:
-  'Number of generations specified is invalid' assert (isinteger *. isscalar) m
-  x getParents^:(m) y
-)
 
 NB.*getDescendants a Get list of animalkeys for all descendants of y in pedigree x
 NB. y is: numeric list of animalkeys
@@ -114,11 +107,6 @@ NB. m is: integer specifying the number of generations forward to go
 NB. eg: jvped 2 getDescendants 2
 getDescendants=: 1 : 'getProgeny^:m'
 getDescendants=: getProgeny^:
-getDescendants=: adverb define
-:
-  'Number of generations specified is invalid' assert (isinteger *. isscalar) m
-  x getProgeny^:(m) y
-)
 
 NB.*getDegreeRelatives a Get list of animalkeys for all relatives of y in pedigree x to degree m
 NB. y is: numeric list of 1 or more animalkeys to start from
@@ -126,11 +114,6 @@ NB. x is: 3-column numeric table of pedigree (animal, sire, dam)
 NB. m is: integer specifying the number of meioses from the starting animals to include
 getDegreeRelatives=: 1 :'~.@(getProgeny , getParents)^:m'
 getDegreeRelatives=: ~.@(getProgeny , getParents)^:
-getDegreeRelatives=: adverb define
-:
-  'Number of meioses specified is invalid' assert (isinteger *. isscalar) m
-  x ~.@(getProgeny , getParents)^:(m) y
-)
 NB. util
 
 any=: +./
