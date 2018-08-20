@@ -1,8 +1,8 @@
 
 before_each=: 3 : 0
-  load '~Addons/bio_pedigree/pedigree.ijs'
+  load 'bio/pedigree'
   coinsert 'pedigree'
-  load '~Addons/bio_pedigree/test/test_pedigrees.ijs'
+  load 'bio/pedigree/test/test_pedigrees'
 )
 
 test_ped1=: 3 : 0

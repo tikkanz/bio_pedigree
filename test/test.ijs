@@ -1,3 +1,4 @@
 require 'general/unittest'
 
-unittest jpath '~Addons/bio_pedigree/test/test_0.ijs'
+NB. unittest jpath '~Addons/bio_pedigree/test/test_0.ijs'
+unittest jpath '~addons/bio/pedigree/test/test_0.ijs'

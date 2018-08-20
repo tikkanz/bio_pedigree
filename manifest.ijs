@@ -18,5 +18,7 @@ PLATFORMS=: ''
 FILES=: 0 : 0
 pedigree.ijs
 test/test.ijs
+test/test_0.ijs
 test/test_pedigrees.ijs
+test/test_pedigree.tsv
 )
