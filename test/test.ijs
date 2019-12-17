@@ -5,4 +5,4 @@ AddonPath=. fpath_j_^:2 loc ''
 
 echo AddonPath,'/test/test_0.ijs'
 NB. unittest jpath '~Addons/bio_pedigree/test/test_0.ijs'
-unittest jpath AddonPath,'/test/test_0.ijs'
+echo unittest jpath AddonPath,'/test/test_0.ijs'
