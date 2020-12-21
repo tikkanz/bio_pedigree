@@ -24,10 +24,10 @@ recodePed=: i.~ getPedIds
 NB.*readPlinkPed v Reads pedigree from Plink .ped filename given by y
 readPlinkPed=: 1 2 3 {"1 (_99) ". [: ];._2 freads  NB. works for numeric ids
 
-NB. expects a pedigree consisting of 3 columns of integer ids: id,sire,dam
+NB. expects a pedigree consisting of 3 columns of ids: id,sire,dam
 
-Unknown=: 0                           NB. id of unknown/missing animals
-uniqKnown=: Unknown -.~ ~.            NB. uniq ids without missing/unknown ids
+known=: ] -. getMissing               NB. ids without unknown/missing ids
+uniqKnown=: ~.@known                  NB. uniq ids without missing/unknown ids
 uniqIds=: uniqKnown@:(0&{"1)          NB. uniq animal ids without missing/unknown ids
 uniqSires=: uniqKnown@:(1&{"1)        NB. uniq sire ids without missing/unknown ids
 uniqDams=: uniqKnown@:(2&{"1)         NB. uniq dam ids without missing/unknown ids
@@ -61,9 +61,9 @@ ownParents=: {."1 e."_1 }."1
 getOwnParents=: #~ ownParents
 
 NB. parents with no own record
-noIds=: getAllParents -.@e.&(-.&Unknown) uniqIds
-getNoIds=: getAllParents ([ #~ -.@e.&(-.&Unknown)) uniqIds
-addNoIds=: ,~ ,.@getNoIds (,"1) 0 0"_
+noIds=: getAllParents -.@e.&known uniqIds
+getNoIds=: getAllParents ([ #~ -.@e.&known) uniqIds
+addNoIds=: ,~ ,.@getNoIds (,"1) 2 # getMissing
 
 NB. ids that occur after id as parent
 lateIds=: -.@(*./)@(i.@# <"1 (}. i."1 {.)@|:)
@@ -83,7 +83,6 @@ sortPed=: \: getGen
 NB.*getParents v Get list of animalkeys for 1st generation ancestors of y in pedigree x
 NB. y is: numeric list of animalkeys
 NB. x is: 3-column numeric table of pedigree (animal, sire, dam)
-NB. getParents=: (Unknown -.~ ~.@,)@((0 0 0 ,~ [) {~ {."1@[ i. ])
 getParents=: uniqKnown@,@([ #~ {."1@[ e. ])
 
 NB.*getProgeny v Get list of animalkeys for 1st generation descendants of y in pedigree x
