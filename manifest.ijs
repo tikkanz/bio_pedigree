@@ -7,9 +7,9 @@ Animal pedigrees/family trees.
 This addon contains basic functionality for working with pedigrees.
 )
 
-VERSION=: '0.1.0'
+VERSION=: '0.2.0'
 
-RELEASE=: 'j806 j807'
+RELEASE=: 'j806 j807 j901'
 
 FOLDER=: 'bio/pedigree'
 

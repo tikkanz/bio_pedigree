@@ -10,6 +10,7 @@ Unknown IDs are represented as `0` or `.` for numeric and non-numeric IDs respec
 
   * Reading: `readPlinkPed`
   * Checking: `checkPed`, `reportPedErrors`, `checkSorted`
+  * Fixing: `addNoIds`, `markNoIdsMissing`
   * Sorting: `sortPed`
   * Recoding: `recodePed`, `getPedId`
   * Retrieving related animals
@@ -78,7 +79,7 @@ Some animals have multiple individual records.
 Some parents do not have their own individual record.
 ```
 
-Some algoritms require all animals to have their own record, `addNoIds` will add records for parents that don't have their own record.
+Some algoritms require all animals to have their own record, `addNoIds` will add records for parents that don't have their own record. `markNoIdsMissing` will replace the parental Id with the appropriate missing.
 ```j
    reportPedErrors litped
 Some parents do not have their own individual record.
@@ -126,6 +127,32 @@ Some parents do not have their own individual record.
 ├────────┼──────┼────────┤
 │Helen   │Hein  │Emily   │
 └────────┴──────┴────────┘
+   markNoIdsMissing litped
+┌────────┬─────┬────────┐
+│Harry   │.    │.       │
+├────────┼─────┼────────┤
+│Gertrude│.    │.       │
+├────────┼─────┼────────┤
+│Nader   │Harry│.       │
+├────────┼─────┼────────┤
+│Karen   │Harry│.       │
+├────────┼─────┼────────┤
+│Steve   │Harry│.       │
+├────────┼─────┼────────┤
+│Frances │Harry│.       │
+├────────┼─────┼────────┤
+│Hein    │.    │Gertrude│
+├────────┼─────┼────────┤
+│Emily   │.    │.       │
+├────────┼─────┼────────┤
+│Barry   │Hein │Karen   │
+├────────┼─────┼────────┤
+│Scott   │Hein │Karen   │
+├────────┼─────┼────────┤
+│Kristi  │Hein │Karen   │
+├────────┼─────┼────────┤
+│Helen   │Hein │Emily   │
+└────────┴─────┴────────┘
 ```
 
 Some algoritms require all parents to occur in the pedigree before their progeny, `sortPed` will ensure this is the case.

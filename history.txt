@@ -1,5 +1,8 @@
 bio/pedigree - change history
 
+== 0.2.0 ==
+ * Adds verb to mark parents with no Id as missing
+
 == 0.1.0 ==
  * Initial release
 
