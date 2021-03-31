@@ -1,15 +1,22 @@
 NB. build
 require 'project'
-NB. loc_z_=: 3 : 'jpath > (4!:4 <''y'') { 4!:3 $0'  NB. pathname of script calling it
+loc_z_=: 3 : 'jpath > (4!:4 <''y'') { 4!:3 $0'  NB. pathname of script calling it
 AddonPath=: fpath_j_^:2 loc ''
 
 writesource_jp_ (AddonPath,'/source');AddonPath,'/pedigree.ijs'
 
+Proj_Src=: AddonPath,'/source'
+Proj_Tgt=: AddonPath,'/pedigree.ijs'
+writesource_jp_ Proj_Src;Proj_Tgt
+
+echo 'Built file: ',Proj_Tgt
+echo 'From: ',Proj_Src
+
 NB. (jpath '~addons/bio/pedigree/pedigree.ijs') (fcopynew ::0:) jpath AddonPath,'/pedigree.ijs'
 
-f=. 3 : 0
-(jpath '~addons/bio/pedigree/',y) (fcopynew ::0:) jpath AddonPath,'/source/',y
-)
+NB. f=. 3 : 0
+NB. (jpath '~addons/bio/pedigree/',y) (fcopynew ::0:) jpath AddonPath,'/source/',y
+NB. )
 
 NB. mkdir_j_ jpath '~addons/bio/pedigree'
 NB. f 'manifest.ijs'
