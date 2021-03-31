@@ -19,6 +19,18 @@ test_pedchecks=: 3 : 0
   assert 0 0 0 0 -: checkPed badped2
 )
 
+test_pedfix=: 3 : 0
+  assert 7 -: # getAllParents tstped
+  assert 7 -: # getAllParents addNoIds tstped
+  assert 7 -: # getAllParents markNoIdsMissing tstped
+  noidcount=. # getNoIds litped
+  allpidcount=. # getAllParents litped 
+  assert allpidcount -: # getAllParents addNoIds litped
+  assert (allpidcount - noidcount) -: # getAllParents markNoIdsMissing litped
+  assert 0 -: # getNoIds addNoIds litped
+  assert 0 -: # getNoIds markNoIdsMissing litped
+)
+
 test_sorting=: 3 :0
   assert -. checkSorted tstped
   assert -. checkSorted jvped

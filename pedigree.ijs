@@ -63,7 +63,16 @@ getOwnParents=: #~ ownParents
 NB. parents with no own record
 noIds=: getAllParents -.@e.&known uniqIds
 getNoIds=: getAllParents ([ #~ -.@e.&known) uniqIds
+
+NB.*addNoIds v Prepends new records to pedigree for parents that have no own record
+NB. y is: 3-column table of pedigree (animal, sire, dam)
+NB. eg: addNoIds litped
 addNoIds=: ,~ ,.@getNoIds (,"1) 2 # getMissing
+
+NB.*markNoIdsMissing v Marks parent ids in pedigree as missing for parents that have no own record
+NB. y is: 3-column table of pedigree (animal, sire, dam)
+NB. eg: addNoIds litped
+markNoIdsMissing=: {."1 ,. (1 2&{"1 e. getNoIds)`(getMissing ,:~ 1 2&{"1)}
 
 NB. ids that occur after id as parent
 lateIds=: -.@(*./)@(i.@# <"1 (}. i."1 {.)@|:)
