@@ -1,0 +1,8 @@
+NB. project: ~Addons/bio/pedigree
+NB.
+NB. defines list of source files.
+NB. path defaults to project directory.
+
+source/init.ijs
+source/ped.ijs
+source/util.ijs
